@@ -3,12 +3,12 @@
 
 // up to 3,317,044,064,679,887,385,961,981 (~1.37 * 2^81)
 // only testing these primes is needed (see wikipedia)
-const std::array<const int, 13> primes{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41};
+static const std::array<const int, 13> primes{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41};
 
-gmp_randclass rng(gmp_randinit_default);
-const mpz_class two = 2;
+static gmp_randclass rng(gmp_randinit_default);
+static const mpz_class two = 2;
 
-mpz_class get_witness(const mpz_class &candidate, const int &pass) {
+static mpz_class get_witness(const mpz_class &candidate, const int &pass) {
 	if (static_cast<std::size_t>(pass) < primes.size()) {
 		return primes.at(pass);
 	}
