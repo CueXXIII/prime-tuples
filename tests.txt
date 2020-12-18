@@ -1,0 +1,33 @@
+Miller-Rabin
+- for n<2^64 7 rounds are deterministic
+
+BPSW
+- for n<2^64 one round BPSW is deterministic
+
+for n>2^64 BPSW + some miller-rabin
+
+then some
+ECPP or BLS75
+
+AKS or APR-CL slow?
+
+Miller-Rabin
+	https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+
+BPSW
+	https://en.wikipedia.org/wiki/Baillie%E2%80%93PSW_primality_test
+
+ECPP
+	https://en.wikipedia.org/wiki/Elliptic_curve_primality
+
+BLS75
+	Theorem 5 of https://www.ams.org/journals/mcom/1975-29-130/S0025-5718-1975-0384673-1/home.html
+	Implemented in https://github.com/danaj/Math-Prime-Util-GMP
+	searches factors for n-1 and n+1, which could be abused for twins
+
+AKS
+	https://en.wikipedia.org/wiki/AKS_primality_test
+
+APR-CL
+	https://en.wikipedia.org/wiki/Adleman%E2%80%93Pomerance%E2%80%93Rumely_primality_test
+
