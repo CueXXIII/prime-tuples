@@ -49,3 +49,33 @@ bool miller_rabin(const mpz_class &n, const int &k) {
 	}
 	return true; // maybe prime
 }
+
+// auto-choose number of passes
+bool miller_rabin(const mpz_class &n) {
+	// wikipedia
+	if (n < 2'047)
+		return miller_rabin(n, 1);
+	if (n < 1'373'653)
+		return miller_rabin(n, 2);
+	if (n < 25'326'001)
+		return miller_rabin(n, 3);
+	if (n < 3'215'031'751)
+		return miller_rabin(n, 4);
+	if (n < 2'152'302'898'747)
+		return miller_rabin(n, 5);
+	if (n < 3'474'749'660'383)
+		return miller_rabin(n, 6);
+	if (n < 341'550'071'728'321)
+		return miller_rabin(n, 7);
+	if (n < 3'825'123'056'546'413'051)
+		return miller_rabin(n, 9);
+	//if (n < 18'446'744'073'709'551'616)
+	//	return miller_rabin(n, 12);
+	if (n < 318665857834031151167461_mpz)
+		return miller_rabin(n, 12);
+	if (n < 3317044064679887385961981_mpz)
+		return miller_rabin(n, 13);
+	// https://security.stackexchange.com/questions/4544/how-many-iterations-of-rabin-miller-should-be-used-to-generate-cryptographic-saf
+	return miller_rabin(n, 40);
+
+}

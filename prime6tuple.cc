@@ -3,9 +3,6 @@
 
 #include "mr.hh"
 
-// how many miller rabin passes to calculate
-const int passes = 31;
-
 inline void print_timestamp(const std::chrono::high_resolution_clock::time_point &starttime) {
 	std::cout << "[" << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - starttime).count() / 1000.0 << "s] ";
 }
@@ -33,12 +30,12 @@ void print_sixtuples(const mpz_class &start) {
 	// (210n + 97, 210n + 101, 210n + 103, 210n + 107, 210n + 109, 210n + 113)
 	for (mpz_class n = first;; n++) {
 		const mpz_class n210 = n*210;
-		if (miller_rabin(n210+97, passes) &&
-		    miller_rabin(n210+101, passes) &&
-		    miller_rabin(n210+103, passes) &&
-		    miller_rabin(n210+107, passes) &&
-		    miller_rabin(n210+109, passes) &&
-		    miller_rabin(n210+113, passes)) {
+		if (miller_rabin(n210+97) &&
+		    miller_rabin(n210+101) &&
+		    miller_rabin(n210+103) &&
+		    miller_rabin(n210+107) &&
+		    miller_rabin(n210+109) &&
+		    miller_rabin(n210+113)) {
 			print_timestamp(starttime);
 			std::cout << "(" << n210+97
 				<< ", " << n210+101
